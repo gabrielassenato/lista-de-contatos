@@ -10,6 +10,16 @@ const ListaDeContatos = () => {
   const [telefone, setTelefone] = useState('')
 
   const adicionarContato = () => {
+    if (email.indexOf('@') === -1) {
+      alert('Por favor, insira um e-mail válido.')
+      return
+    }
+
+    if (!/^\d+$/.test(telefone.replace(/\D/g, ''))) {
+      alert('O campo de telefone deve conter apenas números.')
+      return
+    }
+
     dispatch(
       adicionar({
         nome,
